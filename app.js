@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const fs = require("fs");
 require("dotenv").config();
@@ -12,6 +13,11 @@ const roleRouts = require("./app/role/role.router");
 
 const app = express();
 
+const accesslogsystem = fs.createWriteStream(
+  path.join(__dirname, "logs/access.log"),
+  { flags: "a" }
+);
+app.use(morgan("combined", { stream: accesslogsystem }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static(path.join(__dirname, "public")));
