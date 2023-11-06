@@ -7,9 +7,10 @@ const AuthService = require("./userAuth.service");
 const AuthServiceInstance = new AuthService();
 
 exports.signUp = async (req, res, next) => {
-  //   if (validationResult) {
-  //     return res.status(405).send(validationResult);
-  //   }
+  const errors = validationResult(req);
+  if (!errors.isEmpty) {
+    return res.status(405).send(validationResult.message);
+  }
   try {
     const signUpRes = await AuthServiceInstance.signUp(req);
     res.send(signUpRes);
@@ -39,29 +40,29 @@ exports.usersList = async (req, res, next) => {
   }
 };
 
-exports.deleteUser=async(req,res,next)=>{
+exports.deleteUser = async (req, res, next) => {
   try {
-    const deletedUser=await AuthServiceInstance.deleteUser(req.params.id)
-    res.send('done')
+    const deletedUser = await AuthServiceInstance.deleteUser(req.params.id);
+    res.send("done");
   } catch (error) {
-    next(error)
+    next(error);
   }
-}
+};
 
-exports.user=async(req,res,next)=>{
+exports.user = async (req, res, next) => {
   try {
-    const user=await AuthServiceInstance.user(req.params.id)
-    res.send(user)
+    const user = await AuthServiceInstance.user(req.params.id);
+    res.send(user);
   } catch (error) {
-    next(error)
+    next(error);
   }
-}
+};
 
-exports.editUser=async(req,res,next)=>{
+exports.editUser = async (req, res, next) => {
   try {
-    const user=await AuthServiceInstance.edit(req)
-    res.send(user)
+    const user = await AuthServiceInstance.edit(req);
+    res.send(user);
   } catch (error) {
-    next(error)
+    next(error);
   }
-}
+};

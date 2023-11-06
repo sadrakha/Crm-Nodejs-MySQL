@@ -1,18 +1,30 @@
-const Sequilize = require("sequelize");
+const Sequelize = require("sequelize");
 
 const sequelize = require("../utils/sequelize");
+const category = require("./category.model");
+const subCategory = require("./subCategory.model");
 
 const Article = sequelize.define("article", {
   title: {
-    type: Sequilize.STRING,
+    type: Sequelize.STRING,
     allowNull: false,
   },
   description: {
-    type: Sequilize.TEXT,
+    type: Sequelize.TEXT,
+    allowNull: false,
   },
   images: {
-    type: Sequilize.STRING,
-  }
+    type: Sequelize.STRING,
+  },
+  status: {
+    type: Sequelize.STRING,
+  },
 });
+
+subCategory.belongsToMany(category, {
+  through: "subAndCategory",
+  timelaps: false,
+});
+Article.belongsTo(subCategory);
 
 module.exports = Article;

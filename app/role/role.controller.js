@@ -5,7 +5,7 @@ exports.addRole = async (req, res, next) => {
   try {
     if (!req.permissions.includes("role")) {
       throw Error("not allowed");
-    }
+    } 
     const role = await roleService.addRole(req);
     res.send(role);
   } catch (error) {
