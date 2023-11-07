@@ -30,3 +30,14 @@ exports.verifyToken = async (req, res, next) => {
     next();
   });
 };
+exports.verifyAdmin=async (req, res, next) => {
+    try {
+        if (!req.permissions.includes('manage')) {
+            return res.status(405).send({error:'not allowed'});
+          }
+            next();
+    } catch (error) {
+        return error
+
+    }
+   }

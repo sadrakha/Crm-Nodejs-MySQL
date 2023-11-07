@@ -21,10 +21,7 @@ const Article = sequelize.define("article", {
   },
 });
 
-subCategory.belongsToMany(category, {
-  through: "subAndCategory",
-  timelaps: false,
-});
+subCategory.belongsTo(category);
 Article.belongsTo(subCategory);
 
 module.exports = Article;

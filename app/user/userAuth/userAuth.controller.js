@@ -12,14 +12,13 @@ exports.signUp = async (req, res, next) => {
     return res.status(405).send(validationResult.message);
   }
   try {
+    console.log(req.body);
     const signUpRes = await AuthServiceInstance.signUp(req);
-    res.send(signUpRes);
+    return res.send(signUpRes);
   } catch (error) {
-    // next(error);
+    next(error);
   }
-  // const userName=req.body.userName
-  // const password=bcrypt.hash(req.body.password)
-  // const webpresult=await webpConvertor(req.file.path,'public/uploads/images','kk',50,50)
+  const webpresult=await webpConvertor(req.file.path,'public/uploads/images','kk',50,50)
 };
 
 exports.logIn = async (req, res, next) => {
@@ -42,6 +41,9 @@ exports.usersList = async (req, res, next) => {
 
 exports.deleteUser = async (req, res, next) => {
   try {
+    if (!await User.findOne({where:{id:req.params.id}})) {
+      throw Error
+  }
     const deletedUser = await AuthServiceInstance.deleteUser(req.params.id);
     res.send("done");
   } catch (error) {
@@ -60,6 +62,9 @@ exports.user = async (req, res, next) => {
 
 exports.editUser = async (req, res, next) => {
   try {
+    if (!await User.findOne({where:{id:req.params.id}})) {
+      throw Error
+  }
     const user = await AuthServiceInstance.edit(req);
     res.send(user);
   } catch (error) {

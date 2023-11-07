@@ -12,8 +12,11 @@ class SequelizeService {
   findOne(query){
     return this.model.findOne(query)
   }
-  findAll(){
-    return this.model.findAll()
+  findAll(query){
+    return this.model.findAll(query)
+  }
+  findAndCountAll(query){
+    return this.model.findAndCountAll(query)
   }
   async findOneAndDelete(id){
     return this.model.destroy({where:{id}})

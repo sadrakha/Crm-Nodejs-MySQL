@@ -1,5 +1,5 @@
-const SequelizeService = require("../sequelize/sequelize.service");
-const permissionModel = require("../../models/permission.model");
+const SequelizeService = require("../../sequelize/sequelize.service");
+const permissionModel = require("../../../models/permission.model");
 
 class permission {
   constructor() {

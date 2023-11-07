@@ -3,13 +3,14 @@ const path = require("path");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const fs = require("fs");
+const multer=require('multer')
 require("dotenv").config();
 
 const sequelize = require("./utils/sequelize");
 const userRouts = require("./app/user/userRouter");
-const articleRouts = require("./app/article/article.router");
-const permissionRouts = require("./app/permission/permissionRouter");
-const roleRouts = require("./app/role/role.router");
+const adminRouts=require("./app/admin/admin.router")
+const verify = require("./middleware/loginVerify");
+
 
 const app = express();
 
@@ -17,9 +18,11 @@ const accesslogsystem = fs.createWriteStream(
   path.join(__dirname, "logs/access.log"),
   { flags: "a" }
 );
+
+
 app.use(morgan("combined", { stream: accesslogsystem }));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -33,9 +36,7 @@ app.use((req, res, next) => {
 });
 
 app.use(userRouts);
-app.use(articleRouts);
-app.use(permissionRouts);
-app.use(roleRouts);
+app.use('/admin/',verify.verifyToken,adminRouts)
 
 app.use((error, req, res, next) => {
   console.log(error);
@@ -45,7 +46,7 @@ app.use((error, req, res, next) => {
 sequelize
   .sync()
   .then(() => {
-    app.listen(3000);
+    app.listen(process.env.PORT||3000);
   })
   .catch((e) => {
     console.log(e);

@@ -1,11 +1,11 @@
-const roleModel = require("../../models/role.model");
-const rolePermissionModel = require("../../models/rolePermission.model");
-const sequelizeService = require("../sequelize/sequelize.service");
+const roleModel = require("../../../models/role.model");
+const rolePermissionModel = require("../../../models/rolePermission.model");
+const sequelizeService = require("../../sequelize/sequelize.service");
 
 class roleService {
   constructor() {
     this.role = new sequelizeService(roleModel);
-    this.rolePermission=new sequelizeService(rolePermissionModel)
+    this.rolePermission = new sequelizeService(rolePermissionModel);
   }
 
   async addRole(req) {
@@ -33,29 +33,29 @@ class roleService {
     }
   }
   async editRole(req) {
-   const title = req.body.title;
+    const title = req.body.title;
     let permissionId = req.body.permissionId;
     const roleId = req.params.id;
-    let roles = []; 
+    let roles = [];
 
     try {
-      const updatedRole=await this.role.findOneAndUpdate({title},roleId)
+      const updatedRole = await this.role.findOneAndUpdate({ title }, roleId);
 
-    if (!Array.isArray(permissionId)) {
-      permissionId = [req.body.permissionId];
-    }
+      if (!Array.isArray(permissionId)) {
+        permissionId = [req.body.permissionId];
+      }
 
-    let keys = Object.keys(permissionId);
-    keys.forEach((key) => {
-      roles.push({ roleId,permissionId: permissionId[key] });
-    });
-    console.log(roleId);
-    const lastRolePermission=await this.rolePermission.delete({where:{roleId}})
-    const updatedRolePermission=await this.rolePermission.bulkCreate(roles)
-    console.log(updatedRolePermission)
-    return updatedRolePermission
+      let keys = Object.keys(permissionId);
+      keys.forEach((key) => {
+        roles.push({ roleId, permissionId: permissionId[key] });
+      });
+      const lastRolePermission = await this.rolePermission.delete({
+        where: { roleId },
+      });
+      const updatedRolePermission = await this.rolePermission.bulkCreate(roles);
+      return updatedRolePermission;
     } catch (error) {
-      throw new Error(error)
+      throw new Error(error);
     }
   }
 }
