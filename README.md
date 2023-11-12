@@ -51,17 +51,22 @@ For other routs you have to be login in your postman by coping your token and pa
 ![Annotation 2023-11-11 215608](https://github.com/sadrakha/Crm-Nodejs-MySQL/assets/67289381/1c8e06c4-375a-4082-92e2-42d98d986a1e)
 ## Other Routs
 For user management:
+
 ```
 localhost:3000/deleteUser/(your user id)
 localhost:3000/editUser/(your user id)
 ```
+
 For visiting your profile:
+
 ```
 localhost:3000/profile/(your user id)
 ```
 
 For managing permissions:
+
 ```localhost:3000/admin/permission/add  //to add a permission```
+
 ```localhost:3000/admin/permission/edit/(permission id)  //to edit a permission```
 input you need:
 ```
@@ -72,17 +77,20 @@ For managing roles:
 ```localhost:3000/admin/role/add  //to add a role```
 ```localhost:3000/admin/role/edit/(role id)  //to edit a role```
 inputs you need:
+
 ```
 title
 permissionId
 ```
 For managing articles category:
+
 ```
 localhost:3000/admin/category/add
 localhost:3000/admin/category/edit/:id
 localhost:3000/admin/category/delete/:id
 ```
 inputs you need:
+
 ```title```
 
 For managing articles subcategory:
