@@ -1,5 +1,5 @@
 # CRM API Nodejs app
-A CRM API Node.js app is a web application that uses the Node.js runtime environment and the Express framework to create a RESTful API for managing customer relationships. The app allows users to write and manage their articles, which are organized into categories. The app also supports user authentication and authorization, so that different users can have different roles and permissions to access and modify the data. The app uses a SQL database to store the customer, article, category, and user information. The app also uses various middleware functions to handle tasks such as logging, error handling, validation, and authentication.
+This app is a web application that uses the Node.js runtime environment and the Express framework to create a RESTful API for managing customer relationships. The app allows users to write and manage their articles, which are organized into categories. The app also supports user authentication and authorization, so that different users can have different roles and permissions to access and modify the data. The app uses a SQL database to store the customer, article, category, and user information. The app also uses various middleware functions to handle tasks such as logging, error handling, validation, and authentication.
 
 ## Getting Started
 
