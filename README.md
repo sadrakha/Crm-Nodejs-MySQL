@@ -64,18 +64,26 @@ localhost:3000/profile/(your user id)
 ```
 
 For managing permissions:
+```
+localhost:3000/admin/permission/add
+ ```
 
-```localhost:3000/admin/permission/add  //to add a permission```
+```
+localhost:3000/admin/permission/edit/(permission id)
+```
 
-```localhost:3000/admin/permission/edit/(permission id)  //to edit a permission```
 input you need:
 ```
 title
 ```
 For managing roles:
 
-```localhost:3000/admin/role/add  //to add a role```
-```localhost:3000/admin/role/edit/(role id)  //to edit a role```
+```
+localhost:3000/admin/role/add 
+```
+```
+localhost:3000/admin/role/edit/(role id)
+```
 inputs you need:
 
 ```
