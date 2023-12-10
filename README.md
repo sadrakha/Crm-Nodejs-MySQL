@@ -1,4 +1,4 @@
-# CRM API Nodejs app
+# CMS API Nodejs app
 This app is a web application that uses the Node.js runtime environment and the Express framework to create a RESTful API for managing customer relationships. The app allows users to write and manage their articles, which are organized into categories. The app also supports user authentication and authorization, so that different users can have different roles and permissions to access and modify the data. The app uses a SQL database to store the customer, article, category, and user information. The app also uses various middleware functions to handle tasks such as logging, error handling, validation, and authentication.
 
 ## Getting Started
@@ -22,7 +22,7 @@ Then you need to start your SQL database and after that you're ready to start th
 ```
 npm start
 ```
-![Annotation 2023-11-11 213025](https://github.com/sadrakha/Crm-Nodejs-MySQL/assets/67289381/a6f7b970-6792-4eb6-a64e-eea32979aff5)
+![Annotation 2023-11-11 213025](https://github.com/sadrakha/Cms-Nodejs-MySQL/assets/67289381/a6f7b970-6792-4eb6-a64e-eea32979aff5)
 
 ## Running the tests
 
@@ -45,10 +45,10 @@ or if you already have an user:
 ```
 localhost:3000/logIn
 ```
-![Annotation 2023-11-11 214827](https://github.com/sadrakha/Crm-Nodejs-MySQL/assets/67289381/7c201de0-48f2-4b3c-a4ca-f8f186b7ce39)
+![Annotation 2023-11-11 214827](https://github.com/sadrakha/Cms-Nodejs-MySQL/assets/67289381/7c201de0-48f2-4b3c-a4ca-f8f186b7ce39)
 
 For other routs you have to be login in your postman by coping your token and past it in token input in Authorization tab wile your type is Bearer Token:
-![Annotation 2023-11-11 215608](https://github.com/sadrakha/Crm-Nodejs-MySQL/assets/67289381/1c8e06c4-375a-4082-92e2-42d98d986a1e)
+![Annotation 2023-11-11 215608](https://github.com/sadrakha/Cms-Nodejs-MySQL/assets/67289381/1c8e06c4-375a-4082-92e2-42d98d986a1e)
 ## Other Routs
 For user management:
 
