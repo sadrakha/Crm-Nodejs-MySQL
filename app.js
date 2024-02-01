@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const fs = require("fs");
 const multer=require('multer')
+const upload=multer()
 require("dotenv").config();
 
 const sequelize = require("./utils/sequelize");
@@ -34,6 +35,7 @@ app.use((req, res, next) => {
   );
   next();
 });
+app.use(upload.array());
 
 app.use(userRouts);
 app.use('/admin/',verify.verifyToken,adminRouts)
