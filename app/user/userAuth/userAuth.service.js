@@ -17,22 +17,24 @@ class AuthService {
       const email = req.body.email;
       const roleId = 2;
 
-      if (req.body.comfirmPass !== req.body.password) {
-        return Error
-      }
-      const password = await bcrypt.hash(req.body.password, 12);
+      let file=req.body.profile
       let webpresult 
-      if (req.file.path) {
-        webpresult=await webpConvertor(
+      if (!file) {
+        file=''
+        webpresult=''
+      }else{
+      webpresult=await webpConvertor(
           req.file.path,
           "public/uploads/images",
           "kk",
           50,
-          50
-        );
-      }else{
-        webpresult=''
+          50);
       }
+      if (req.body.comfirmPass !== req.body.password) {
+        return Error
+      }
+      const password = await bcrypt.hash(req.body.password, 12);
+      
       const user = await this.User.create({
         userName,
         email,
