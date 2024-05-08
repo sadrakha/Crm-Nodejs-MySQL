@@ -130,5 +130,5 @@ subCategoryId
 
 * Nodejs
 * express
-* SQL
+* MySQL
 
