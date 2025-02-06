@@ -14,11 +14,13 @@ class ArticleService {
   async createArticle(req) {
     
     // thumbGenerator(req.body.img)
-    try {const title = req.body.title;
-    const description = req.body.description;
+    try {const title = req.body.user;
+    const description = req.body.body;
     let status = req.body.status;
-    const userId = req.user.id;
+    const userId = req.body.id;
     const subCategoryId = req.body.subCategoryId;
+console.log(title,description);
+
     if (!status) {
       status = "private";
     }
@@ -26,10 +28,12 @@ class ArticleService {
       const article = await this.Article.create({
         title,
         description,
-        status,
+        // status:'1',
         userId,
-        subCategoryId,
+        // subCategoryId:1,
       });
+    console.log(32);
+
       return article;
     } catch (error) {
       return error;
@@ -56,7 +60,7 @@ class ArticleService {
   async deleteArticle(id) {
     try {
       const deleteArticle = await this.Article.findOneAndDelete(id);
-      return deleteArticle;
+      return 1;
     } catch (error) {
       return error;
     }

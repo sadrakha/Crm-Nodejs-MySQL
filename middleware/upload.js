@@ -20,6 +20,7 @@ exports.uploadImage=(req,res,next)=>{
             }
           }
         multer({storage:fileStorage,fileFilter})
+        next()
     } catch (error) {
         return error
     }

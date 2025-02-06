@@ -13,7 +13,7 @@ class ArticleService {
   async articles(req) {
     
     try {
-      const articles = await pagination(3,this.Article,req)
+      const articles = await pagination(5,this.Article,req)
       return articles;
     } catch (error) {
       return error;
@@ -21,8 +21,9 @@ class ArticleService {
   }
 
   async article(req) {
-    const articleId = req.params.id
-
+    const articleId = req.params.id;
+    console.log(articleId);
+    
     try {
       const article = await this.Article.findOne({where:{id:articleId}}      );
       return article;
